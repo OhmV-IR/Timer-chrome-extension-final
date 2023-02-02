@@ -1,0 +1,53 @@
+html {
+    min-height: 400px;
+    min-width: 600px;
+    overflow: hidden;
+    background: darkseagreen;
+}
+#extensionTitle {
+    text-align: center;
+    color:purple;
+    position:absolute;
+    right:155px;
+    bottom:340px;
+}
+#timerInputSecondsField {
+    width: 125px;
+    position:absolute;
+    right:10px;
+    bottom:330px;
+}
+#timerInputSecondsLabel {
+    position:absolute;
+    right:150px;
+    bottom:333px;
+}
+#timerInputMinutesField {
+    width: 125px;
+    position: absolute;
+    right: 210px;
+    bottom: 330px;
+}
+#timerInputMinutesLabel {
+    position: absolute;
+    right: 350px;
+    bottom:333px;
+}
+#timerInputHoursField {
+    width: 125px;
+    position: absolute;
+    right: 410px;
+    bottom:330px;
+}
+#timerInputHoursLabel {
+    position:absolute;
+    right:550px;
+    bottom:333px;
+}
+#startTimerButton {
+    color: whitesmoke;
+    background-color:#083E23;
+    position:absolute;
+    right:250px;
+    bottom:290px;
+}

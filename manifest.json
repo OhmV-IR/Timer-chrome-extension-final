@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Timer chrome extension",
+    "version": "1.0",
+    "description": "Start timers from your web browser",
+    "author": "somewhatbewildering@youtube.com",
+    "icons": {
+        "16": "icon16x.png",
+        "32": "icon32x.png",
+        "48": "icon48x.png",
+        "128": "icon128x.png"
+    },
+    "action": {
+        "default_icon": {
+            "16": "icon16x.png",
+            "32": "icon32x.png",
+            "48": "icon48x.png",
+            "128": "icon128x.png"
+        },
+        "default_popup": "popup.html"
+    }
+}
