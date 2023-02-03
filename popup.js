@@ -5,6 +5,7 @@ document.getElementById("startTimerButton").onclick = function(){
     var HoursInputFieldValue = (parseInt(document.getElementById("timerInputHoursField").value)).toString();
     var MinutesInputFieldValue = (parseInt(document.getElementById("timerInputMinutesField").value)).toString();
     var SecondsInputFieldValue = (parseInt(document.getElementById("timerInputSecondsField").value)).toString();
+    var timerDisplay = document.getElementById("timerDisplay");
     console.log("Hours = " + HoursInputFieldValue + " Minutes = " + MinutesInputFieldValue + " Seconds = " + SecondsInputFieldValue);
     // This if statement checks for if there are any numeric characters or if the number is less than 0. If true, then fails and gives a console message
     if(HoursInputFieldValue < 0 || HoursInputFieldValue.indexOf("NaN") > -1 || MinutesInputFieldValue < 0 || MinutesInputFieldValue.indexOf("NaN") > -1 || SecondsInputFieldValue < 0 || SecondsInputFieldValue.indexOf("NaN") > -1){
@@ -19,6 +20,12 @@ document.getElementById("startTimerButton").onclick = function(){
         console.log("Total seconds: " + totalSeconds);
         console.log("Hours: " + HoursInputFieldValue + " Minutes: " + MinutesInputFieldValue + " Seconds: " + SecondsInputFieldValue);
         console.log(MinutesInputFieldValue.indexOf("NaN"));
+        var currentHours = parseInt(HoursInputFieldValue);
+        var currentMinutes = parseInt(MinutesInputFieldValue);
+        var currentSeconds = parseInt(SecondsInputFieldValue);
+        for(i = 0; i < totalSeconds; i++){
+            timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
+        }
     }
 }
 function formatTime(h,m,s){
