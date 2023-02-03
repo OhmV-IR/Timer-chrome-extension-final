@@ -51,3 +51,10 @@ html {
     right:250px;
     bottom:290px;
 }
+#timerDisplay {
+    color:purple;
+    position: absolute;
+    bottom:185px;
+    right:200px;
+    font-size: 48px;
+}

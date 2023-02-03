@@ -6,14 +6,17 @@
     <body>
         <h1 id="extensionTitle">Timer chrome extension</h1>
         <form id="timerInput">
-            <input type="text" id="timerInputHoursField" name="timerInputHoursField">
-            <input type="text" id="timerInputMinutesField" name="timerInputMinutesField">
-            <input type="text" id="timerInputSecondsField" name="timerInputSecondsField">
+            <input type="text" id="timerInputHoursField" name="timerInputHoursField" value="0">
+            <input type="text" id="timerInputMinutesField" name="timerInputMinutesField" value="0">
+            <input type="text" id="timerInputSecondsField" name="timerInputSecondsField" value="0">
             <label id="timerInputHoursLabel" for="timerInputHoursField">Hours:</label>
             <label id="timerInputMinutesLabel" for="timerInputMinutesField">Minutes:</label>
             <label id="timerInputSecondsLabel" for="timerInputSecondsField">Seconds:</label>
             <button type="button" id="startTimerButton">Start timer</button>
         </form>
+        <center>
+        <h1 id="timerDisplay">0:00:00</h1>
+        </center>
         <script src="popup.js"></script>
     </body>
 </html>
