@@ -25,6 +25,7 @@ document.getElementById("startTimerButton").onclick = function(){
         var currentSeconds = parseInt(SecondsInputFieldValue);
         for(i = 0; i < totalSeconds; i++){
             timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
+            lowerTime();
         }
     }
 }
@@ -41,7 +42,7 @@ function formatTime(h,m,s){
     if(h == 0){
         enableFirstSemicolon = false;
     }
-    if(m == 0 && h == 0){
+    if(m == "00" && h == 0){
         enableSecondSemicolon = false;
     }
     if(enableFirstSemicolon == false){
@@ -57,4 +58,24 @@ function formatTime(h,m,s){
         console.log("ERROR: Unhandled output format");
     }
     return output;
+}
+function lowerTime(){
+    if(currentSeconds != 0){
+        currentSeconds = currentSeconds - 1;
+    }
+    else if(currentMinutes != 0){
+        currentMinutes = currentMinutes - 1;
+        currentSeconds = 60;
+        currentSeconds  = currentSeconds - 1;
+    }
+    else if(currentHours != 0){
+        currentHours = currentHours - 1;
+        currentMinutes = 60;
+        currentMinutes = currentMinutes - 1;
+        currentSeconds = 60;
+        currentSeconds = currentSeconds - 1;
+    }
+    else{
+        console.log("Timer complete");
+    }
 }
