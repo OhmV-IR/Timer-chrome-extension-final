@@ -48,15 +48,15 @@ html {
     color: whitesmoke;
     background-color:#083E23;
     position:absolute;
-    right:250px;
+    right:245px;
     bottom:290px;
 }
 #stopTimerButton {
-    color:red;
-    background-color:purple;
+    color:#CB394A;
+    background-color:#083E23;
     position:absolute;
-    right:100px;
-    bottom:100px;
+    right:242px;
+    bottom:185px;
 }
 #timerDisplay {
     color:purple;
