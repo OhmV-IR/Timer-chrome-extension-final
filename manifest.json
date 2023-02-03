@@ -18,5 +18,9 @@
             "128": "icon128x.png"
         },
         "default_popup": "popup.html"
-    }
+    },
+    "permissions": [
+        "notifications",
+        "storage"
+    ]
 }

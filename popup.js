@@ -1,4 +1,8 @@
 // Add onclick listeners to buttons
+var currentHours;
+var currentMinutes;
+var currentSeconds;
+var intervalID;
 document.getElementById("startTimerButton").onclick = function(){
     console.log("Timer start button clicked");
     var exceptionCheckPassed = true;
@@ -20,13 +24,14 @@ document.getElementById("startTimerButton").onclick = function(){
         console.log("Total seconds: " + totalSeconds);
         console.log("Hours: " + HoursInputFieldValue + " Minutes: " + MinutesInputFieldValue + " Seconds: " + SecondsInputFieldValue);
         console.log(MinutesInputFieldValue.indexOf("NaN"));
-        var currentHours = parseInt(HoursInputFieldValue);
-        var currentMinutes = parseInt(MinutesInputFieldValue);
-        var currentSeconds = parseInt(SecondsInputFieldValue);
-        for(i = 0; i < totalSeconds; i++){
+        currentHours = parseInt(HoursInputFieldValue);
+        currentMinutes = parseInt(MinutesInputFieldValue);
+        currentSeconds = parseInt(SecondsInputFieldValue);
+        intervalID = setInterval(() => {
             timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
             lowerTime();
-        }
+        }, 1000);
+        // this means execute this code every 1000ms until stopped
     }
 }
 function formatTime(h,m,s){
@@ -77,5 +82,9 @@ function lowerTime(){
     }
     else{
         console.log("Timer complete");
+        document.getElementById("timerDisplay").innerHTML = "0:00:00"
+        clearInterval(intervalID);
+        // Add chrome.notifications API here
+        document.location.reload(true);
     }
 }
