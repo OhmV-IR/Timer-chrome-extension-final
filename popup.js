@@ -21,3 +21,33 @@ document.getElementById("startTimerButton").onclick = function(){
         console.log(MinutesInputFieldValue.indexOf("NaN"));
     }
 }
+function formatTime(h,m,s){
+    var enableFirstSemicolon = true;
+    var enableSecondSemicolon = true;
+    var output = "Default output"
+    if(m < 10){
+        m = "0" + m;
+    }
+    if(s < 10){
+        s = "0" + s;
+    }
+    if(h == 0){
+        enableFirstSemicolon = false;
+    }
+    if(m == 0 && h == 0){
+        enableSecondSemicolon = false;
+    }
+    if(enableFirstSemicolon == false){
+        output = m + ":" + s;
+    }
+    else if(enableFirstSemicolon == false && enableSecondSemicolon == false){
+        output = s;
+    }
+    else if(enableFirstSemicolon == true){
+        output = h + ":" + m + ":" + s;
+    }
+    else{
+        console.log("ERROR: Unhandled output format");
+    }
+    return output;
+}
