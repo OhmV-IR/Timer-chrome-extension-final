@@ -51,6 +51,13 @@ html {
     right:250px;
     bottom:290px;
 }
+#stopTimerButton {
+    color:red;
+    background-color:purple;
+    position:absolute;
+    right:100px;
+    bottom:100px;
+}
 #timerDisplay {
     color:purple;
     position: absolute;

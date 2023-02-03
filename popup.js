@@ -3,37 +3,6 @@ var currentHours;
 var currentMinutes;
 var currentSeconds;
 var intervalID;
-document.getElementById("startTimerButton").onclick = function(){
-    console.log("Timer start button clicked");
-    var exceptionCheckPassed = true;
-    var HoursInputFieldValue = (parseInt(document.getElementById("timerInputHoursField").value)).toString();
-    var MinutesInputFieldValue = (parseInt(document.getElementById("timerInputMinutesField").value)).toString();
-    var SecondsInputFieldValue = (parseInt(document.getElementById("timerInputSecondsField").value)).toString();
-    var timerDisplay = document.getElementById("timerDisplay");
-    console.log("Hours = " + HoursInputFieldValue + " Minutes = " + MinutesInputFieldValue + " Seconds = " + SecondsInputFieldValue);
-    // This if statement checks for if there are any numeric characters or if the number is less than 0. If true, then fails and gives a console message
-    if(HoursInputFieldValue < 0 || HoursInputFieldValue.indexOf("NaN") > -1 || MinutesInputFieldValue < 0 || MinutesInputFieldValue.indexOf("NaN") > -1 || SecondsInputFieldValue < 0 || SecondsInputFieldValue.indexOf("NaN") > -1){
-        console.log("Exception check failed");
-        exceptionCheckPassed = false;
-    }
-    else if(exceptionCheckPassed){
-        // The variable will be true if the above block did not trigger
-        // If input is valid, code here executes
-        console.log("Exception check passed");
-        var totalSeconds = ((parseInt(HoursInputFieldValue) * 60 * 60) + (parseInt(MinutesInputFieldValue) * 60) + parseInt(SecondsInputFieldValue));
-        console.log("Total seconds: " + totalSeconds);
-        console.log("Hours: " + HoursInputFieldValue + " Minutes: " + MinutesInputFieldValue + " Seconds: " + SecondsInputFieldValue);
-        console.log(MinutesInputFieldValue.indexOf("NaN"));
-        currentHours = parseInt(HoursInputFieldValue);
-        currentMinutes = parseInt(MinutesInputFieldValue);
-        currentSeconds = parseInt(SecondsInputFieldValue);
-        intervalID = setInterval(() => {
-            timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
-            lowerTime();
-        }, 1000);
-        // this means execute this code every 1000ms until stopped
-    }
-}
 function formatTime(h,m,s){
     var enableFirstSemicolon = true;
     var enableSecondSemicolon = true;
@@ -84,7 +53,57 @@ function lowerTime(){
         console.log("Timer complete");
         document.getElementById("timerDisplay").innerHTML = "0:00:00"
         clearInterval(intervalID);
-        // Add chrome.notifications API here
-        document.location.reload(true);
+        document.getElementById("timerInputHoursField").value = "0";
+        document.getElementById("timerInputMinutesField").value = "0";
+        document.getElementById("timerInputSecondsField").value = "0";
     }
+}
+document.getElementById("startTimerButton").onclick = function(){
+    console.log("Timer start button clicked");
+    var exceptionCheckPassed = true;
+    var HoursInputFieldValue = (parseInt(document.getElementById("timerInputHoursField").value)).toString();
+    var MinutesInputFieldValue = (parseInt(document.getElementById("timerInputMinutesField").value)).toString();
+    var SecondsInputFieldValue = (parseInt(document.getElementById("timerInputSecondsField").value)).toString();
+    var timerDisplay = document.getElementById("timerDisplay");
+    console.log("Hours = " + HoursInputFieldValue + " Minutes = " + MinutesInputFieldValue + " Seconds = " + SecondsInputFieldValue);
+    // This if statement checks for if there are any numeric characters or if the number is less than 0. If true, then fails and gives a console message
+    if(HoursInputFieldValue < 0 || HoursInputFieldValue.indexOf("NaN") > -1 || MinutesInputFieldValue < 0 || MinutesInputFieldValue.indexOf("NaN") > -1 || SecondsInputFieldValue < 0 || SecondsInputFieldValue.indexOf("NaN") > -1){
+        console.log("Exception check failed");
+        exceptionCheckPassed = false;
+    }
+    else if(exceptionCheckPassed){
+        // The variable will be true if the above block did not trigger
+        // If input is valid, code here executes
+        console.log("Exception check passed");
+        var totalSeconds = ((parseInt(HoursInputFieldValue) * 60 * 60) + (parseInt(MinutesInputFieldValue) * 60) + parseInt(SecondsInputFieldValue));
+        console.log("Total seconds: " + totalSeconds);
+        console.log("Hours: " + HoursInputFieldValue + " Minutes: " + MinutesInputFieldValue + " Seconds: " + SecondsInputFieldValue);
+        console.log(MinutesInputFieldValue.indexOf("NaN"));
+        currentHours = parseInt(HoursInputFieldValue);
+        currentMinutes = parseInt(MinutesInputFieldValue);
+        currentSeconds = parseInt(SecondsInputFieldValue);
+        setTimeout(() => {
+            var notificationOptions = {
+                type: 'basic',
+                title: 'Timer finished!',
+                message: 'Timer chrome extension',
+                priority: 1,
+                iconUrl:'../icon16x.png'
+            
+            };
+            chrome.notifications.create('timerDone', notificationOptions);
+        }, totalSeconds * 1000);
+        intervalID = setInterval(() => {
+            timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
+            lowerTime();
+        }, 1000);
+        // this means execute this code every 1000ms until stopped
+    }
+}
+document.getElementById("stopTimerButton").onclick = function(){
+    clearInterval(intervalID);
+    clearTimeout('timerDone');
+    document.getElementById("timerInputHoursField").value = "0";
+    document.getElementById("timerInputMinutesField").value = "0";
+    document.getElementById("timerInputSecondsField").value = "0";
 }
