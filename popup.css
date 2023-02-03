@@ -1,5 +1,5 @@
 html {
-    min-height: 400px;
+    min-height: 300px;
     min-width: 600px;
     overflow: hidden;
     background: darkseagreen;
@@ -9,59 +9,59 @@ html {
     color:purple;
     position:absolute;
     right:155px;
-    bottom:340px;
+    bottom:240px;
 }
 #timerInputSecondsField {
     width: 125px;
     position:absolute;
     right:10px;
-    bottom:330px;
+    bottom:230px;
 }
 #timerInputSecondsLabel {
     position:absolute;
     right:150px;
-    bottom:333px;
+    bottom:233px;
 }
 #timerInputMinutesField {
     width: 125px;
     position: absolute;
     right: 210px;
-    bottom: 330px;
+    bottom: 230px;
 }
 #timerInputMinutesLabel {
     position: absolute;
     right: 350px;
-    bottom:333px;
+    bottom:233px;
 }
 #timerInputHoursField {
     width: 125px;
     position: absolute;
     right: 410px;
-    bottom:330px;
+    bottom:230px;
 }
 #timerInputHoursLabel {
     position:absolute;
     right:550px;
-    bottom:333px;
+    bottom:233px;
 }
 #startTimerButton {
     color: whitesmoke;
     background-color:#083E23;
     position:absolute;
     right:245px;
-    bottom:290px;
+    bottom:190px;
 }
 #stopTimerButton {
     color:#CB394A;
     background-color:#083E23;
     position:absolute;
     right:242px;
-    bottom:185px;
+    bottom:85px;
 }
 #timerDisplay {
     color:purple;
     position: absolute;
-    bottom:185px;
+    bottom:85px;
     right:200px;
     font-size: 48px;
 }
