@@ -82,8 +82,10 @@ document.getElementById("startTimerButton").onclick = function(){
         currentHours = parseInt(HoursInputFieldValue);
         currentMinutes = parseInt(MinutesInputFieldValue);
         currentSeconds = parseInt(SecondsInputFieldValue);
+        // Will run below code in brackets after totalSeconds * 1000(for milliseconds)
         setTimeout(() => {
             var notificationOptions = {
+                // Array of options for the notification
                 type: 'basic',
                 title: 'Timer finished!',
                 message: 'Timer chrome extension',
@@ -100,9 +102,13 @@ document.getElementById("startTimerButton").onclick = function(){
         // this means execute this code every 1000ms until stopped
     }
 }
+// This code runs when you click the stop timer button
 document.getElementById("stopTimerButton").onclick = function(){
+    // Stops executing the timer code every 1000ms
     clearInterval(intervalID);
+    // Cancels the notification
     clearTimeout('timerDone');
+    // Sets the input fields to 0
     document.getElementById("timerInputHoursField").value = "0";
     document.getElementById("timerInputMinutesField").value = "0";
     document.getElementById("timerInputSecondsField").value = "0";
