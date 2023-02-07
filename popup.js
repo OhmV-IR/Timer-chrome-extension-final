@@ -126,7 +126,9 @@ document.getElementById("startTimerButton").onclick = function(){
         }, totalSeconds * 1000);
         // Save the interval id for later to cancel it once the timer is done
         intervalID = setInterval(() => {
+            // Every 1000ms(1 second), change the timer display to the formatted time of the current number of hours, minutes and seconds left in the timer
             timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
+            // Lower the amount of time left by one second
             lowerTime();
         }, 1000);
         // this means execute this code every 1000ms until stopped
@@ -134,11 +136,11 @@ document.getElementById("startTimerButton").onclick = function(){
 }
 // This code runs when you click the stop timer button
 document.getElementById("stopTimerButton").onclick = function(){
-    // Stops executing the timer code every 1000ms
+    // Stops executing the timer code every 1000ms using our saved intervalID
     clearInterval(intervalID);
-    // Cancels the notification
+    // Cancels the notification using the ID that we set
     clearTimeout('timerDone');
-    // Sets the input fields to 0
+    // Sets the user input fields in the GUI to 0
     document.getElementById("timerInputHoursField").value = "0";
     document.getElementById("timerInputMinutesField").value = "0";
     document.getElementById("timerInputSecondsField").value = "0";
