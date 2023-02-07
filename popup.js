@@ -1,3 +1,4 @@
+// CHALLENGE: Add the chrome.storage API to save timers even when the popup menu is closed
 //Define global variables
 var currentHours;
 var currentMinutes;
