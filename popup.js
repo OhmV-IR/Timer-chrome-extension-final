@@ -1,36 +1,47 @@
-// Add onclick listeners to buttons
+//Define global variables
 var currentHours;
 var currentMinutes;
 var currentSeconds;
 var intervalID;
+// Function to format hours, minutes and seconds into time to be displayed on screen
 function formatTime(h,m,s){
+    // Define variables
     var enableFirstSemicolon = true;
     var enableSecondSemicolon = true;
     var output = "Default output"
+    // If m is not 2 digits, add a 0 before the number ex. "8" = "08"
     if(m < 10){
         m = "0" + m;
     }
+    // If s is not 2 digits add a 0 before the number ex. "4" = "04"
     if(s < 10){
         s = "0" + s;
     }
+    // If there is no hours value then do not add the number of hours or first semicolon to the output
     if(h == 0){
         enableFirstSemicolon = false;
     }
-    if(m == "00" && h == 0){
+    // If there is no minutes and hours value then do not add the number of hours, minutes and the first and second semicolons to the output
+    else if(m == "00" && h == 0){
         enableSecondSemicolon = false;
     }
+    // If there are no hours then add the number of minutes and seconds with a semicolon in between
     if(enableFirstSemicolon == false){
         output = m + ":" + s;
     }
+    // If there are no hours and minutes, then only add the seconds to the output
     else if(enableFirstSemicolon == false && enableSecondSemicolon == false){
         output = s;
     }
+    // If both are true(if enableFirstSemicolon is true enableSecondSemicolon must be true as well) then add the hours, minutes and seconds sepearted by semicolons to the output
     else if(enableFirstSemicolon == true){
         output = h + ":" + m + ":" + s;
     }
     else{
+        // Catch all ending statement to produce an error in case something totally unexpected happens
         console.log("ERROR: Unhandled output format");
     }
+    // Return the output to be used in code
     return output;
 }
 function lowerTime(){
@@ -66,7 +77,7 @@ function lowerTime(){
         document.getElementById("timerInputSecondsField").value = "0";
     }
 }
-// When start timer button is pressed run code in brackets
+// When start timer button is pressed run code below
 document.getElementById("startTimerButton").onclick = function(){
     console.log("Timer start button clicked");
     // Initialize variables
@@ -88,14 +99,19 @@ document.getElementById("startTimerButton").onclick = function(){
         // The variable will be true if the above block did not trigger
         // If input is valid, code here executes
         console.log("Exception check passed");
+        // parseInt is used here to change all the string values to integers so that we can do math with them
+        // Multiply any hours by 60 twice to get the hours value in seconds, multiply any minutes value by 60 to get the value in seconds and then add them all together
+        // with the number of seconds
         var totalSeconds = ((parseInt(HoursInputFieldValue) * 60 * 60) + (parseInt(MinutesInputFieldValue) * 60) + parseInt(SecondsInputFieldValue));
         console.log("Total seconds: " + totalSeconds);
         console.log("Hours: " + HoursInputFieldValue + " Minutes: " + MinutesInputFieldValue + " Seconds: " + SecondsInputFieldValue);
         console.log(MinutesInputFieldValue.indexOf("NaN"));
+        // These will be our counting variables to subtract from while the timer is running
         currentHours = parseInt(HoursInputFieldValue);
         currentMinutes = parseInt(MinutesInputFieldValue);
         currentSeconds = parseInt(SecondsInputFieldValue);
         // Will run below code in brackets after totalSeconds * 1000(for milliseconds)
+        // () => {} creates function for the setTimeout code without having to declare one elsewhere
         setTimeout(() => {
             var notificationOptions = {
                 // Array of options for the notification
@@ -108,6 +124,7 @@ document.getElementById("startTimerButton").onclick = function(){
             };
             chrome.notifications.create('timerDone', notificationOptions);
         }, totalSeconds * 1000);
+        // Save the interval id for later to cancel it once the timer is done
         intervalID = setInterval(() => {
             timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
             lowerTime();
