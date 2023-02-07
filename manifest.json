@@ -1,15 +1,19 @@
 {
+    "comment": "Manifest-version details which version of chrome extension we are using(google is not accepting anything new that is not version 3)",
     "manifest_version": 3,
+    "comment2": "Name, version and description are all shown on the chrome://extensions page and author will be shown if your extension is published to the web store",
     "name": "Timer chrome extension",
     "version": "1.0",
     "description": "Start timers from your web browser",
     "author": "somewhatbewildering@youtube.com",
+    "comment3": "Icons array details which files should be used as the icon for the extension with different image sizes for the web store",
     "icons": {
         "16": "icon16x.png",
         "32": "icon32x.png",
         "48": "icon48x.png",
         "128": "icon128x.png"
     },
+    "comment4": "Action array details the default icons for the pinned extensions bar and the default popup when you click on the extension",
     "action": {
         "default_icon": {
             "16": "icon16x.png",
@@ -19,8 +23,10 @@
         },
         "default_popup": "popup.html"
     },
+    "comment5": "Permissions array details what the extension has access to and what APIs it can use",
     "permissions": [
         "notifications",
         "storage"
-    ]
+    ],
+    "comment6": "Ignore that it says unrecognized manifest key in the errors section of chrome://extensions. JSON doesn't allow comments so this is the only way I can do them" 
 }
