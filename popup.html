@@ -1,23 +1,34 @@
+<!--Defines the file as an html webpage-->
 <!DOCTYPE html>
 <html>
+    <!-- Header of an html file is loaded first and contains things like css, page title, page icon .etc-->
     <head>
+        <!-- Adds a link to our css file by stating the type of stylesheet and providing a reference to the file popup.css-->
         <link rel="stylesheet" href="popup.css">
     </head>
+    <!-- Body is loaded last and contains the main content of the page-->
     <body>
         <h1 id="extensionTitle">Timer chrome extension</h1>
+        <!-- Form provides a group of elements together and allows for new element types such as inputs -->
         <form id="timerInput">
+            <!-- Adds an input that allows for text to be entered by the user with a default value of 0 -->
+            <!-- id's are to be referenced by javascript whereas the name is referenced by other elements within the form such as labels-->
             <input type="text" id="timerInputHoursField" name="timerInputHoursField" value="0">
             <input type="text" id="timerInputMinutesField" name="timerInputMinutesField" value="0">
             <input type="text" id="timerInputSecondsField" name="timerInputSecondsField" value="0">
+            <!-- Add labels corresponding to the name of each input field-->
             <label id="timerInputHoursLabel" for="timerInputHoursField">Hours:</label>
             <label id="timerInputMinutesLabel" for="timerInputMinutesField">Minutes:</label>
             <label id="timerInputSecondsLabel" for="timerInputSecondsField">Seconds:</label>
+            <!-- Adds a submit button with an ID to add an onclick function in our javascript file-->
             <button type="button" id="startTimerButton">Start timer</button>
         </form>
         <button id="stopTimerButton">Stop timer</button>
+        <!-- Center tags center the element horizontally in the screen -->
         <center>
         <h1 id="timerDisplay">0:00:00</h1>
         </center>
+        <!-- Chrome extensions only allow external javascript, so instead of putting our js code between script tags, we provide a reference to the file instead-->
         <script src="popup.js"></script>
     </body>
 </html>
