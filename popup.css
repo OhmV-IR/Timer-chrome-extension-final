@@ -1,17 +1,27 @@
+/* The html group name defines styling requirements for the whole page*/
 html {
+    /* Defines the size of the html page*/
     min-height: 300px;
     min-width: 600px;
+    /* Doesn't allow for a scrollbar to be displayed*/
     overflow: hidden;
+    /* Sets the background color of the page*/ 
     background: darkseagreen;
 }
+/* # means that the following text is an element id and is used to set styling rules for specific elements*/
 #extensionTitle {
+    /* Aligns the text in the center of the element*/
     text-align: center;
+    /* Sets the color of the text */
     color:purple;
+    /* An absolute position means that it can cover elements and can go anywhere on the page and is not relative to anything*/
     position:absolute;
+    /* Sets how far away the element should be from the right and bottom of the page*/ 
     right:155px;
     bottom:240px;
 }
 #timerInputSecondsField {
+    /* Sets the width of the element*/
     width: 125px;
     position:absolute;
     right:10px;
@@ -45,6 +55,7 @@ html {
     bottom:233px;
 }
 #startTimerButton {
+    /* Color sets the text inside of the button wheras the background color sets the color the button is filled in with*/
     color: whitesmoke;
     background-color:#083E23;
     position:absolute;
@@ -63,5 +74,6 @@ html {
     position: absolute;
     bottom:85px;
     right:200px;
+    /* Font-size changes how large the text is(48px is not the same as 48 font size in word or google docs)*/
     font-size: 48px;
 }
