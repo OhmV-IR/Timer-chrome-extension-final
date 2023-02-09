@@ -127,10 +127,10 @@ document.getElementById("startTimerButton").onclick = function(){
         }, totalSeconds * 1000);
         // Save the interval id for later to cancel it once the timer is done
         intervalID = setInterval(() => {
-            // Every 1000ms(1 second), change the timer display to the formatted time of the current number of hours, minutes and seconds left in the timer
-            timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
             // Lower the amount of time left by one second
             lowerTime();
+            // Every 1000ms(1 second), change the timer display to the formatted time of the current number of hours, minutes and seconds left in the timer
+            timerDisplay.innerHTML = formatTime(currentHours, currentMinutes, currentSeconds);
         }, 1000);
         // this means execute this code every 1000ms until stopped
     }
